@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
           flex items-center justify-center
           w-full md:w-1/2 h-full
           bg-[url('/images/sideimage.png')] bg-cover bg-center
-          md:bg-none      max-md:mt-30
+          md:bg-none      max-md:mt-20
         `}
           >
             <div className="absolute inset-0 bg-black/40 md:hidden" />
