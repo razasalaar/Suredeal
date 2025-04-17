@@ -23,7 +23,17 @@ export default function RootLayout({ children }) {
         <title>SUREDEAL</title>
       </head>
       <body>
-        <main className="flex h-screen w-full max-md:mt-15">
+        <div className="flex justify-center max-md:mb-5 max-md:mt-5 md:hidden">
+          <Image
+            src="/images/logo.png"
+            alt="SureDeal Logo"
+            width={140}
+            height={40}
+            className="object-contain"
+          />
+        </div>
+
+        <main className="flex h-screen w-full ">
           <div className="relative hidden md:block w-1/2 h-full">
             <Image
               src="/images/sideimage.png"
@@ -44,7 +54,7 @@ export default function RootLayout({ children }) {
           >
             <div className="absolute inset-0 bg-black/40 md:hidden" />
 
-            <div className="relative z-10 w-full max-w-md p-8  md:bg-white rounded-xl ">
+            <div className="relative flex-col  z-10 w-full max-w-md p-8  md:bg-white rounded-xl ">
               {children}
             </div>
           </div>

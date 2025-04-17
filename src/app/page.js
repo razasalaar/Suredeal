@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center w-full px-4 py-8  ">
-      <div className="mb-6 mt-10">
+      <div className="mb-6 md:mt-10">
         <Image
           src="/images/logo.png"
           alt="SureDeal Logo"
