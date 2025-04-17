@@ -2,7 +2,7 @@ import LoginPage from "./login/page";
 import Image from "next/image";
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center w-full px-4 py-8  max-sm:mt-25 max-md:mt-55">
+    <div className="flex flex-col items-center justify-center w-full px-4 py-8  max-sm:mt-55 max-md:mt-55">
       <div className="mb-6 mt-10">
         <Image
           src="/images/logo.png"
