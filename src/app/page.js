@@ -9,10 +9,10 @@ export default function Home() {
           alt="SureDeal Logo"
           width={140}
           height={40}
-          className="object-contain "
+          className="object-contain max-md:hidden "
         />
       </div>
-      <div className=" max-md:mb-25 w-full">
+      <div className="w-full">
         <LoginPage />
       </div>
     </div>
