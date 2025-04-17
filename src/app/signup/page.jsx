@@ -2,16 +2,11 @@
 import { ImAppleinc } from "react-icons/im";
 import { FaFacebook } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
-export default function LoginPage() {
-  const router = useRouter();
-  const redirectToSignup = () => {
-    router.push("/signup");
-  };
+export default function signupPage() {
   return (
     <>
-      <div className="flex justify-center mb-5  max-md:hidden">
+      <div className="flex justify-center mb-5 mt-2  max-md:hidden">
         <Image
           src="/images/logo.png"
           alt="SureDeal Logo"
@@ -20,10 +15,9 @@ export default function LoginPage() {
           className="object-contain"
         />
       </div>
-
       <div className="w-full max-w-md py-4 px-6 bg-[linear-gradient(180deg,_#F4FBF9_-37.08%,_#F0FFFB_55.83%,_#EDFFFB_170.44%)] rounded-xl  border  ">
         <h3 className="text-xl font-bold text-[#173C36] mb-10 text-center">
-          Login
+          Sign Up
         </h3>
 
         <div className="mb-4">
@@ -37,11 +31,11 @@ export default function LoginPage() {
             id="email"
             type="text"
             placeholder="Enter your email"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-white"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#8DCCBF] bg-white"
           />
         </div>
 
-        <div className="mb-2">
+        <div className="mb-4">
           <label
             htmlFor="password"
             className="block text-sm font-medium text-[#173C36] mb-2"
@@ -52,35 +46,31 @@ export default function LoginPage() {
             id="password"
             type="password"
             placeholder="Enter your password"
-            className="w-full px-4 py-2 border border-gray-300 bg-white rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full px-4 py-2 border border-gray-300 bg-white rounded-md focus:outline-none focus:ring-1 focus:ring-[#8DCCBF]"
           />
         </div>
 
-        <div className="text-right mb-6">
-          <a
-            href="#"
-            className="text-sm font-semibold text-[#173C36] hover:underline "
+        <div className="mb-6">
+          <label
+            htmlFor="password"
+            className="block text-sm font-medium text-[#173C36] mb-2"
           >
-            Forgot Password?
-          </a>
+            Confirm Password
+          </label>
+          <input
+            id="password"
+            type="password"
+            placeholder="Enter your password"
+            className="w-full px-4 py-2 border border-gray-300 bg-white rounded-md focus:outline-none focus:ring-1 focus:ring-[#8DCCBF]"
+          />
         </div>
 
         <button
           type="submit"
           className="w-full bg-[#007D6E] hover:bg-[#007D6E] cursor-pointer text-white font-semibold py-2 rounded-md transition"
         >
-          Login
+          Sign up
         </button>
-
-        <div className="text-center mt-4 text-sm text-{#173C36}">
-          Don’t have an account?{" "}
-          <a
-            onClick={redirectToSignup}
-            className="text-[#173C36] font-bold underline cursor-pointer"
-          >
-            Signup Now
-          </a>
-        </div>
 
         <div className="my-4 flex items-center justify-center gap-3">
           <div className="flex-grow h-px bg-[#173C36]" />
