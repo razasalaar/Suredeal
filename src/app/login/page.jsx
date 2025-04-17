@@ -4,7 +4,7 @@ import { FaFacebookF, FaGoogle } from "react-icons/fa";
 
 export default function LoginPage() {
   return (
-    <div className="w-full max-w-md p-8 bg-[linear-gradient(180deg,_#F4FBF9_-37.08%,_#F0FFFB_55.83%,_#EDFFFB_170.44%)] rounded-xl  border max-md:mb-70 ">
+    <div className="w-full max-w-md p-8 bg-[linear-gradient(180deg,_#F4FBF9_-37.08%,_#F0FFFB_55.83%,_#EDFFFB_170.44%)] rounded-xl  border  ">
       <h3 className="text-xl font-bold text-[#173C36] mb-10 text-center">
         Login
       </h3>

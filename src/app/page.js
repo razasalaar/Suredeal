@@ -12,8 +12,9 @@ export default function Home() {
           className="object-contain "
         />
       </div>
-
-      <LoginPage />
+      <div className=" max-md:mb-25 w-full">
+        <LoginPage />
+      </div>
     </div>
   );
 }

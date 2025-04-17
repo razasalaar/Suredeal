@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
         <title>SUREDEAL</title>
       </head>
       <body>
-        <main className="flex h-screen w-full">
+        <main className="flex h-screen w-full max-md:mt-15">
           <div className="relative hidden md:block w-1/2 h-full">
             <Image
               src="/images/sideimage.png"
@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
           flex items-center justify-center
           w-full md:w-1/2 h-full
           bg-[url('/images/sideimage.png')] bg-cover bg-center
-          md:bg-none      max-md:mt-20
+          md:bg-none      
         `}
           >
             <div className="absolute inset-0 bg-black/40 md:hidden" />
