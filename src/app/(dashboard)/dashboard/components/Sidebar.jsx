@@ -16,7 +16,7 @@ const Sidebar = () => {
   const isActive = (path) => pathname === path;
 
   const linkClasses = (path) =>
-    `flex items-center justify-center text-[13px] py-3 gap-2 transition-all duration-50 ${
+    `flex items-center justify-start pl-4 text-[13px] py-3 gap-2 transition-all duration-50 ${
       isActive(path) ? "bg-[#218C7D] text-white font-semibold" : "text-gray-600"
     }`;
 
