@@ -39,7 +39,7 @@ export default function MobileBar() {
             {isSidebarOpen ? (
               <X className="w-6 h-6 text-gray-700" />
             ) : (
-              <Menu className="w-6 h-6 text-gray-700" />
+              <Menu className="w-6 h-6 mt-3 text-gray-700" />
             )}
           </button>
 
@@ -48,7 +48,7 @@ export default function MobileBar() {
             alt="SureDeal Logo"
             width={140}
             height={20}
-            className="object-contain mt-0"
+            className="object-contain mb-2"
           />
 
           <UserDropdown />
