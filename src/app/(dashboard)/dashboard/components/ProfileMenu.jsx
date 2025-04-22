@@ -27,7 +27,7 @@ export default function UserDropdown() {
       if (user) {
         setUserInfo({
           name: user.user_metadata.full_name || "Unknown User",
-          avatar: user.user_metadata.avatar_url || "/default-avatar.png",
+          avatar: user.user_metadata.avatar_url || "/images/guest.png",
         });
       }
     };
@@ -55,7 +55,7 @@ export default function UserDropdown() {
       >
         <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center overflow-hidden">
           <img
-            src={userInfo.avatar || "/default-avatar.png"}
+            src={userInfo.avatar || "/images/guest.png"}
             alt="User"
             className="w-full h-full object-cover"
           />
