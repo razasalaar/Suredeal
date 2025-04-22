@@ -24,8 +24,8 @@ const Sidebar = () => {
     `w-6 h-6 ${isActive(path) ? "text-white" : "text-[#218C7D]"}`;
 
   return (
-    <div className="bg-white h-screen mt-4">
-      <div className="flex justify-center mb-5 max-md:hidden">
+    <div className="bg-white h-screen md:mt-4 ">
+      <div className="flex justify-center mb-5 ">
         <Image
           src="/images/logo.png"
           alt="SureDeal Logo"
@@ -35,7 +35,7 @@ const Sidebar = () => {
         />
       </div>
 
-      <nav className="flex flex-col gap-20 mt-20">
+      <nav className="flex flex-col gap-20 md:mt-20  mt-8">
         <div className="space-y-4 items-center text-center">
           <Link href="/dashboard" className={linkClasses("/dashboard")}>
             <LayoutDashboard className={iconClass("/dashboard")} />

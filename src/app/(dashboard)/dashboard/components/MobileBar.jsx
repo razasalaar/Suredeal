@@ -72,7 +72,10 @@ export default function MobileBar() {
                 <Menu className="w-6 h-6 text-gray-700" />
               )}
             </button>
-            <Sidebar />
+
+            <div className="mb-0">
+              <Sidebar />
+            </div>
           </div>
         </div>
       )}
