@@ -1,4 +1,4 @@
-import SearchBar from "./Searchbar";
+import SearchBar from "./SearchBar";
 import UserDropdown from "./ProfileMenu";
 import LanguageDropdown from "./LangDrop.jsx";
 export default function Navbar() {
