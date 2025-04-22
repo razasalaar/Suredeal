@@ -48,7 +48,7 @@ export default function MobileBar() {
             alt="SureDeal Logo"
             width={140}
             height={20}
-            className="object-contain"
+            className="object-contain mt-0"
           />
 
           <UserDropdown />
@@ -61,11 +61,17 @@ export default function MobileBar() {
 
           <div
             ref={sidebarRef}
-            className={`relative bg-white w-64 mt-15 h-full shadow-lg z-50 transform transition-transform duration-300 ease-in-out ${
+            className={`relative bg-white w-64  h-full shadow-lg z-50 transform transition-transform duration-300 ease-in-out ${
               isSidebarOpen ? "translate-x-0" : "-translate-x-full"
             }`}
           >
-
+            <button onClick={toggleSidebar}>
+              {isSidebarOpen ? (
+                <X className="w-6 h-6 text-gray-700 ml-4 mt-6 " />
+              ) : (
+                <Menu className="w-6 h-6 text-gray-700" />
+              )}
+            </button>
             <Sidebar />
           </div>
         </div>
