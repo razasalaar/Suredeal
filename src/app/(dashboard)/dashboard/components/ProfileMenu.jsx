@@ -2,16 +2,38 @@ import { useState, useRef, useEffect } from "react";
 import { User, LogOut, ChevronDown } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 import { useRouter } from "next/navigation";
+
 export default function UserDropdown() {
   const [isOpen, setIsOpen] = useState(false);
+  const [userInfo, setUserInfo] = useState({ name: "", avatar: "" });
+
   const buttonRef = useRef(null);
   const dropdownRef = useRef(null);
   const router = useRouter();
+
   const toggleDropdown = () => setIsOpen(!isOpen);
+
   const handleLogout = async () => {
     await supabase.auth.signOut();
     router.push("/");
   };
+
+  useEffect(() => {
+    const getUser = async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      if (user) {
+        setUserInfo({
+          name: user.user_metadata.full_name || "Unknown User",
+          avatar: user.user_metadata.avatar_url || "/default-avatar.png",
+        });
+      }
+    };
+
+    getUser();
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -29,16 +51,16 @@ export default function UserDropdown() {
       <button
         ref={buttonRef}
         onClick={toggleDropdown}
-        className="flex items-center space-x-2 rounded-lg p-2   transition-colors"
+        className="flex items-center space-x-2 rounded-lg p-2 transition-colors"
       >
         <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center overflow-hidden">
           <img
-            src="/api/placeholder/32/32"
+            src={userInfo.avatar || "/default-avatar.png"}
             alt="User"
             className="w-full h-full object-cover"
           />
         </div>
-        <span className="font-medium text-[#173C36]">John Doe</span>
+        <span className="font-medium text-[#173C36]">{userInfo.name}</span>
         <ChevronDown
           size={16}
           className={`text-gray-500 transition-transform ${

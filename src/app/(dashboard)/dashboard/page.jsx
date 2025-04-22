@@ -26,8 +26,8 @@ export default function DashboardPage() {
   return (
     <>
       <div className=" text-[#173C36]  w-full  px-6 py-8 bg-[#FFFFFF]  md:rounded-2xl  ">
-        <h1 className="font-bold  text-xl">Dashboard</h1>
-        <div className="grid  grid-cols-2 md:grid-cols-4 mt-10 gap-4">
+        <h1 className="font-bold   text-xl">Dashboard</h1>
+        <div className="grid  grid-cols-2 font-semibold md:grid-cols-4 mt-10 gap-4">
           <div className="bg-[#F7FAFF] p-4 rounded-md ">
             <h1 className="text-[16px]">Total Quote Value</h1>
             <h1 className="text-[34px]">$ 1.2m</h1>
