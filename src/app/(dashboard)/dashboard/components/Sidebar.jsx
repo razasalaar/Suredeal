@@ -23,7 +23,6 @@ const Sidebar = () => {
   const iconClass = (path) =>
     `w-6 h-6 ${isActive(path) ? "text-white" : "text-[#218C7D]"}`;
 
-  
   return (
     <div className="bg-white h-screen mt-4">
       <div className="flex justify-center mb-5 max-md:hidden">
@@ -32,7 +31,7 @@ const Sidebar = () => {
           alt="SureDeal Logo"
           width={140}
           height={40}
-          className="object-contain"
+          className="object-contain "
         />
       </div>
 

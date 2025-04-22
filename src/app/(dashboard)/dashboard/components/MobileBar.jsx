@@ -33,7 +33,7 @@ export default function MobileBar() {
 
   return (
     <>
-      <nav className="bg-white px-4 py-2 rounded mb-4 md:hidden shadow">
+      <nav className="bg-white px-4 py-2 rounded  md:hidden shadow">
         <div className="flex items-center justify-between">
           <button onClick={toggleSidebar}>
             {isSidebarOpen ? (

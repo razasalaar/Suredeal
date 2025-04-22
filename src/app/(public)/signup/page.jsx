@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { ImAppleinc } from "react-icons/im";
 import { FaFacebook } from "react-icons/fa6";
@@ -11,13 +11,40 @@ export default function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const handleGoogleLogin = async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: "http://localhost:3000/dashboard",
+      },
+    });
 
+    if (error) {
+      console.error("Google sign-in error:", error.message);
+    }
+  };
+
+  useEffect(() => {
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        console.log("Auth changed: ", event);
+      }
+    );
+
+    return () => {
+      authListener.subscription.unsubscribe();
+    };
+  }, []);
   const handleSignup = async () => {
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
+    setLoading(true);
+    setError("");
 
     const { error } = await supabase.auth.signUp({
       email,
@@ -25,7 +52,7 @@ export default function SignupPage() {
     });
 
     if (error) {
-      alert("Signup failed: " + error.message);
+      setError("Signup failed: " + error.message);
     } else {
       alert("Signup successful! Please login.");
       router.push("/login");
@@ -107,7 +134,7 @@ export default function SignupPage() {
         >
           Sign up
         </button>
-
+        {error && <p className="text-red-500 text-center mt-2">{error}</p>}
         <div className="my-4 flex items-center justify-center gap-3">
           <div className="flex-grow h-px bg-[#173C36]" />
           <span className="text-[#173C36] text-sm">or</span>
@@ -127,7 +154,10 @@ export default function SignupPage() {
             <ImAppleinc size={28} />
           </button>
 
-          <button className="p-2 rounded-full cursor-pointer transition-transform duration-300 hover:scale-110 ">
+          <button
+            onClick={handleGoogleLogin}
+            className="p-2 rounded-full cursor-pointer transition-transform duration-300 hover:scale-110 "
+          >
             <FcGoogle size={28} />
           </button>
         </div>

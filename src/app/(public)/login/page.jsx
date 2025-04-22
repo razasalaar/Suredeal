@@ -12,21 +12,40 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isClient, setIsClient] = useState(false);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  // Hydration-safe rendering
   useEffect(() => {
     setIsClient(true);
   }, []);
+  const handleGoogleLogin = async () => {
+    setLoading(true);
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: "http://localhost:3000/dashboard",
+      },
+    });
 
+    setLoading(false);
+
+    if (error) {
+      console.error("Google sign-in error:", error.message);
+      setError("An error occurred while signing in with Google.");
+    }
+  };
   const handleLogin = async () => {
-    const { error } = await supabase.auth.signInWithPassword({
+    setError("");
+    setLoading(true);
+    const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
+    setLoading(false);
 
     if (error) {
-      alert("Login failed: " + error.message);
+      setError(error.message);
     } else {
       router.push("/dashboard");
     }
@@ -97,7 +116,7 @@ export default function LoginPage() {
             Forgot Password?
           </button>
         </div>
-
+        {error && <p className="text-red-500 text-center mt-2">{error}</p>}
         <button
           type="submit"
           onClick={handleLogin}
@@ -135,7 +154,10 @@ export default function LoginPage() {
             <ImAppleinc size={28} />
           </button>
 
-          <button className="p-2 rounded-full cursor-pointer transition-transform duration-300 hover:scale-110">
+          <button
+            onClick={handleGoogleLogin}
+            className="p-2 rounded-full cursor-pointer transition-transform duration-300 hover:scale-110"
+          >
             <FcGoogle size={28} />
           </button>
         </div>
