@@ -65,6 +65,7 @@ export default function MobileBar() {
               isSidebarOpen ? "translate-x-0" : "-translate-x-full"
             }`}
           >
+
             <Sidebar />
           </div>
         </div>
