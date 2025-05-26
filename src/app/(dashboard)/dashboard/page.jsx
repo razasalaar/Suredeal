@@ -9,19 +9,19 @@ export default function DashboardPage() {
   const [session, setSession] = useState(null);
   const [user, setUser] = useState(null);
   const router = useRouter();
-  const loadSession = async () => {
-    const sess = await supabase.auth.getSession();
-    setSession(sess.data.session);
-    if (!sess.data.session) {
-      router.push("/login");
-    } else {
-      const userData = sess.data.session.user;
-      setUser(userData);
-    }
-  };
-  useEffect(() => {
-    loadSession();
-  }, []);
+  // const loadSession = async () => {
+  //   const sess = await supabase.auth.getSession();
+  //   setSession(sess.data.session);
+  //   if (!sess.data.session) {
+  //     router.push("/login");
+  //   } else {
+  //     const userData = sess.data.session.user;
+  //     setUser(userData);
+  //   }
+  // };
+  // useEffect(() => {
+  //   loadSession();
+  // }, []);
 
   return (
     <>

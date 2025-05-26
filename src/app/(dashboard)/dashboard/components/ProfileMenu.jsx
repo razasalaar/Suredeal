@@ -51,7 +51,7 @@ export default function UserDropdown() {
       <button
         ref={buttonRef}
         onClick={toggleDropdown}
-        className="flex items-center space-x-2 rounded-lg p-2 transition-colors"
+        className="flex items-center space-x-2 rounded-lg p-2 transition-colors cursor-pointer"
       >
         <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center overflow-hidden">
           <img
@@ -71,13 +71,13 @@ export default function UserDropdown() {
 
       {isOpen && (
         <div className="absolute left-0 w-full mt-1 bg-white rounded-md shadow-lg py-1 z-10 border border-gray-200">
-          <button className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+          <button className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
             <User size={16} className="mr-2" />
             Profile
           </button>
           <button
             onClick={handleLogout}
-            className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            className="flex items-center w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
           >
             <LogOut size={16} className="mr-2" />
             Logout

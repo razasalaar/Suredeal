@@ -35,7 +35,7 @@ export default function MobileBar() {
     <>
       <nav className="bg-white px-4 py-2 rounded  md:hidden shadow">
         <div className="flex items-center justify-between">
-          <button onClick={toggleSidebar}>
+          <button onClick={toggleSidebar} className="cursor-pointer">
             {isSidebarOpen ? (
               <X className="w-6 h-6 text-gray-700" />
             ) : (
@@ -65,7 +65,7 @@ export default function MobileBar() {
               isSidebarOpen ? "translate-x-0" : "-translate-x-full"
             }`}
           >
-            <button onClick={toggleSidebar}>
+            <button onClick={toggleSidebar} className="cursor-pointer">
               {isSidebarOpen ? (
                 <X className="w-6 h-6 text-gray-700 ml-4 mt-6 " />
               ) : (

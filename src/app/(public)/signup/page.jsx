@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { supabase } from "@/lib/supabaseClient";
+
 import { ImAppleinc } from "react-icons/im";
 import { FaFacebook } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
@@ -11,51 +11,31 @@ export default function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+
   const router = useRouter();
-  const handleGoogleLogin = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: "http://localhost:3000/dashboard",
+
+  const handleRegister = async () => {
+    const url = "https://api.freeapi.app/api/v1/users/register";
+    const options = {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        "content-type": "application/json",
       },
-    });
-
-    if (error) {
-      console.error("Google sign-in error:", error.message);
-    }
-  };
-
-  useEffect(() => {
-    const { data: authListener } = supabase.auth.onAuthStateChange(
-      (event, session) => {
-        console.log("Auth changed: ", event);
-      }
-    );
-
-    return () => {
-      authListener.subscription.unsubscribe();
+      body: JSON.stringify({
+        email: email,
+        password: password,
+        role: "ADMIN",
+        username: "raza123",
+      }),
     };
-  }, []);
-  const handleSignup = async () => {
-    if (password !== confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
-    setLoading(true);
-    setError("");
 
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-    });
-
-    if (error) {
-      setError("Signup failed: " + error.message);
-    } else {
-      alert("Signup successful! Please login.");
-      router.push("/login");
+    try {
+      const response = await fetch(url, options);
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -129,12 +109,12 @@ export default function SignupPage() {
 
         <button
           type="submit"
-          onClick={handleSignup}
+          onClick={handleRegister}
           className="w-full bg-[#007D6E] hover:bg-[#00655B] cursor-pointer text-white font-semibold py-2 rounded-md transition"
         >
           Sign up
         </button>
-        {error && <p className="text-red-500 text-center mt-2">{error}</p>}
+
         <div className="my-4 flex items-center justify-center gap-3">
           <div className="flex-grow h-px bg-[#173C36]" />
           <span className="text-[#173C36] text-sm">or</span>
@@ -154,10 +134,7 @@ export default function SignupPage() {
             <ImAppleinc size={28} />
           </button>
 
-          <button
-            onClick={handleGoogleLogin}
-            className="p-2 rounded-full cursor-pointer transition-transform duration-300 hover:scale-110 "
-          >
+          <button className="p-2 rounded-full cursor-pointer transition-transform duration-300 hover:scale-110 ">
             <FcGoogle size={28} />
           </button>
         </div>
