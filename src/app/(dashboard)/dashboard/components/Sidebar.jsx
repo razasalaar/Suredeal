@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 
-const Sidebar = () => {
+const Sidebar = ({ onLinkClick }) => {
   const pathname = usePathname();
 
   const isActive = (path) => pathname === path;
@@ -37,7 +37,11 @@ const Sidebar = () => {
 
       <nav className="flex flex-col gap-20 md:mt-20  mt-8">
         <div className="space-y-4 items-center text-center">
-          <Link href="/dashboard" className={linkClasses("/dashboard")}>
+          <Link
+            href="/dashboard"
+            className={linkClasses("/dashboard")}
+            onClick={onLinkClick}
+          >
             <LayoutDashboard className={iconClass("/dashboard")} />
             <span className="text-[16px]">Dashboard</span>
           </Link>
@@ -45,6 +49,7 @@ const Sidebar = () => {
           <Link
             href="/dashboard/quotations"
             className={linkClasses("/dashboard/quotations")}
+            onClick={onLinkClick}
           >
             <MessageSquareQuote
               className={iconClass("/dashboard/quotations")}
@@ -55,6 +60,7 @@ const Sidebar = () => {
           <Link
             href="/dashboard/customers"
             className={linkClasses("/dashboard/customers")}
+            onClick={onLinkClick}
           >
             <Users className={iconClass("/dashboard/customers")} />
             <span className="text-[16px]">Customers</span>
@@ -63,6 +69,7 @@ const Sidebar = () => {
           <Link
             href="/dashboard/products"
             className={linkClasses("/dashboard/products")}
+            onClick={onLinkClick}
           >
             <Package2 className={iconClass("/dashboard/products")} />
             <span className="text-[16px]">Products</span>

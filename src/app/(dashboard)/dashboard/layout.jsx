@@ -12,7 +12,7 @@ export default function DashboardLayout({ children }) {
           <div className="max-md:hidden">
             <Sidebar />
           </div>
-          <main className="bg-slate-100 md:p-4 overflow-y-auto flex flex-col">
+          <main className="bg-slate-100 md:p-4 overflow-y-auto flex flex-col page-fade-in">
             <Navbar /> <MobileBar />
             <section className="flex-1 bg-slate-100 md:py-4  md:rounded">
               {children}

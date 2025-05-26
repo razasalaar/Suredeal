@@ -3,10 +3,9 @@ import { useState } from "react";
 import { MoreHorizontal, ChevronDown, Menu, X } from "lucide-react";
 import NewQuotationForm from "../components/NewQuotationForm";
 
-// Mock data to match the image
 const mockQuotations = [
   {
-    id: "QHA05656",
+    id: "QHA00001",
     name: "Quotation for 1000 Vehicles",
     status: "In Progress",
     expiringOn: "28 OCT 2024",
@@ -15,40 +14,85 @@ const mockQuotations = [
     statusColor: "orange",
   },
   {
-    id: "QHA05656",
-    name: "Quotation for 1000 Vehicles",
-    status: "In Progress",
-    expiringOn: "28 OCT 2024",
-    progress: 52,
-    amount: "$1000",
-    statusColor: "orange",
-  },
-  {
-    id: "QHA05656",
-    name: "Quotation for 1000 Vehicles",
-    status: "In Progress",
-    expiringOn: "28 OCT 2024",
-    progress: 52,
-    amount: "$1000",
-    statusColor: "orange",
-  },
-  {
-    id: "QHA05656",
-    name: "Quotation for 1000 Vehicles",
+    id: "QHA00002",
+    name: "Quotation for 500 Bikes",
     status: "New",
-    expiringOn: "28 OCT 2024",
-    progress: 52,
-    amount: "$1000",
+    expiringOn: "15 NOV 2024",
+    progress: 0,
+    amount: "$300",
     statusColor: "yellow",
   },
   {
-    id: "QHA05656",
-    name: "Quotation for 1000 Vehicles",
+    id: "QHA00003",
+    name: "Quotation for 200 Trucks",
     status: "In Review",
-    expiringOn: "28 OCT 2024",
-    progress: 52,
-    amount: "$1000",
+    expiringOn: "05 DEC 2024",
+    progress: 35,
+    amount: "$1200",
     statusColor: "blue",
+  },
+  {
+    id: "QHA00004",
+    name: "Quotation for 50 Buses",
+    status: "Closed",
+    expiringOn: "01 SEP 2024",
+    progress: 100,
+    amount: "$800",
+    statusColor: "green",
+  },
+  {
+    id: "QHA00005",
+    name: "Quotation for 150 Vans",
+    status: "New",
+    expiringOn: "12 OCT 2024",
+    progress: 5,
+    amount: "$500",
+    statusColor: "yellow",
+  },
+  {
+    id: "QHA00006",
+    name: "Quotation for 300 Scooters",
+    status: "In Progress",
+    expiringOn: "18 NOV 2024",
+    progress: 60,
+    amount: "$750",
+    statusColor: "orange",
+  },
+  {
+    id: "QHA00007",
+    name: "Quotation for 75 Electric Cars",
+    status: "In Review",
+    expiringOn: "22 DEC 2024",
+    progress: 80,
+    amount: "$2000",
+    statusColor: "blue",
+  },
+  {
+    id: "QHA00008",
+    name: "Quotation for 120 Mini Trucks",
+    status: "Closed",
+    expiringOn: "10 OCT 2024",
+    progress: 100,
+    amount: "$1800",
+    statusColor: "green",
+  },
+  {
+    id: "QHA00009",
+    name: "Quotation for 250 Hybrid Cars",
+    status: "New",
+    expiringOn: "25 NOV 2024",
+    progress: 0,
+    amount: "$3200",
+    statusColor: "yellow",
+  },
+  {
+    id: "QHA00010",
+    name: "Quotation for 80 Delivery Vans",
+    status: "In Progress",
+    expiringOn: "08 DEC 2024",
+    progress: 45,
+    amount: "$1600",
+    statusColor: "orange",
   },
 ];
 
@@ -406,7 +450,7 @@ export default function Quotations() {
                       {openDropdownIndex === index && (
                         <div
                           className={`absolute z-10 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none ${
-                            index >= quotations.length - 2
+                            index >= quotations.length - 3
                               ? "bottom-full mb-2"
                               : "top-full mt-2"
                           }`}
@@ -568,7 +612,7 @@ export default function Quotations() {
 
       {/* Mobile Bottom Sheet Modal */}
       {!showNewQuotationForm && selectedQuotation && (
-        <div className="sm:hidden fixed inset-0 bg-black/90 bg-opacity-50 z-50 flex items-end">
+        <div className="sm:hidden fixed inset-0 bg-black/20 bg-opacity-50 z-50 flex items-end">
           <div className="bg-white w-full rounded-t-lg animate-slide-up">
             {/* Modal Header */}
             <div className="flex items-center justify-between p-4 border-b border-gray-200">

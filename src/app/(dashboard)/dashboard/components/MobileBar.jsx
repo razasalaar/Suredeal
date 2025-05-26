@@ -74,7 +74,7 @@ export default function MobileBar() {
             </button>
 
             <div className="mb-0">
-              <Sidebar />
+              <Sidebar onLinkClick={toggleSidebar} />
             </div>
           </div>
         </div>
