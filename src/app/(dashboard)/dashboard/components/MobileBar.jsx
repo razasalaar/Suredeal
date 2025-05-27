@@ -55,36 +55,30 @@ export default function MobileBar() {
         </div>
       </nav>
 
-      <div
-        className={`fixed inset-0 z-50 flex transition-opacity duration-300 ease-in-out ${
-          isSidebarOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
-      >
-        <div
-          className={`fixed inset-0 bg-black transition-opacity duration-300 ease-in-out ${
-            isSidebarOpen ? "opacity-50" : "opacity-0"
-          }`}
-        />
+      {isSidebarOpen && (
+        <div className="fixed inset-0 z-50 flex">
+          <div className="fixed inset-0 bg-black opacity-50" />
 
-        <div
-          ref={sidebarRef}
-          className={`relative bg-white w-64  h-full shadow-lg z-50 transform transition-transform duration-300 ease-in-out ${
-            isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-          }`}
-        >
-          <button onClick={toggleSidebar} className="cursor-pointer">
-            {isSidebarOpen ? (
-              <X className="w-6 h-6 text-gray-700 ml-4 mt-6 " />
-            ) : (
-              <Menu className="w-6 h-6 text-gray-700" />
-            )}
-          </button>
+          <div
+            ref={sidebarRef}
+            className={`relative bg-white w-64  h-full shadow-lg z-50 transform transition-transform duration-300 ease-in-out ${
+              isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+            }`}
+          >
+            <button onClick={toggleSidebar} className="cursor-pointer">
+              {isSidebarOpen ? (
+                <X className="w-6 h-6 text-gray-700 ml-4 mt-6 " />
+              ) : (
+                <Menu className="w-6 h-6 text-gray-700" />
+              )}
+            </button>
 
-          <div className="mb-0">
-            <Sidebar onLinkClick={toggleSidebar} />
+            <div className="mb-0">
+              <Sidebar onLinkClick={toggleSidebar} />
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 }

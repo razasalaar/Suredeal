@@ -314,9 +314,9 @@ export default function Quotations() {
           <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
             {/* Desktop Table Header */}
             <div className="bg-[#F9F9F9] px-6 py-4 border-b border-gray-200">
-              <div className="flex gap-2">
+              <div className="grid grid-cols-[auto_1fr_2fr_1fr_1fr_2fr_1fr_auto] gap-4 items-start min-w-0">
                 {/* Select All Checkbox */}
-                <div className="w-8 flex justify-center">
+                <div className="flex justify-center">
                   <input
                     type="checkbox"
                     checked={selectAll}
@@ -326,7 +326,7 @@ export default function Quotations() {
                 </div>
 
                 {/* Quotation# */}
-                <div className="w-32">
+                <div className="min-w-0">
                   <span className="text-sm font-medium text-gray-600 mb-2 block">
                     Quotation#
                   </span>
@@ -337,10 +337,10 @@ export default function Quotations() {
                 </div>
 
                 {/* Name */}
-                <div className="w-54 max-md:w-45 ">
+                <div className="min-w-0">
                   <span className="text-sm font-medium text-gray-600 mb-2 flex items-center">
                     Name
-                    <ChevronDown className="w-4 h-4 ml-1 text-gray-400" />
+                    <ChevronDown className="w-4 h-4 ml-1 text-gray-400 flex-shrink-0" />
                   </span>
                   <input
                     type="text"
@@ -349,10 +349,10 @@ export default function Quotations() {
                 </div>
 
                 {/* Status */}
-                <div className="w-32 max-md:w-40 ">
+                <div className="min-w-0">
                   <span className="text-sm font-medium text-gray-600 mb-2 flex items-center">
                     Status
-                    <ChevronDown className="w-4 h-4 ml-1 text-gray-400" />
+                    <ChevronDown className="w-4 h-4 ml-1 text-gray-400 flex-shrink-0" />
                   </span>
                   <input
                     type="text"
@@ -361,10 +361,10 @@ export default function Quotations() {
                 </div>
 
                 {/* Expiring on */}
-                <div className="w-32">
+                <div className="min-w-0">
                   <span className="text-sm font-medium text-gray-600 mb-2 whitespace-nowrap flex items-center">
                     Expiring on
-                    <ChevronDown className="w-4 h-4 ml-1 text-gray-400" />
+                    <ChevronDown className="w-4 h-4 ml-1 text-gray-400 flex-shrink-0" />
                   </span>
                   <input
                     type="text"
@@ -373,7 +373,7 @@ export default function Quotations() {
                 </div>
 
                 {/* Progress */}
-                <div className="w-44">
+                <div className="min-w-0">
                   <span className="text-sm font-medium text-gray-600 mb-2 block">
                     Progress
                   </span>
@@ -384,10 +384,10 @@ export default function Quotations() {
                 </div>
 
                 {/* Amount */}
-                <div className="w-30">
+                <div className="min-w-0">
                   <span className="text-sm font-medium text-gray-600 mb-2 flex items-center">
                     Amount
-                    <ChevronDown className="w-4 h-4 ml-1 text-gray-400" />
+                    <ChevronDown className="w-4 h-4 ml-1 text-gray-400 flex-shrink-0" />
                   </span>
                   <input
                     type="text"
@@ -396,7 +396,7 @@ export default function Quotations() {
                 </div>
 
                 {/* More */}
-                <div className="w-20 flex justify-end">
+                <div className="flex justify-end">
                   <span className="text-sm font-medium text-gray-600">
                     More
                   </span>
@@ -408,9 +408,9 @@ export default function Quotations() {
             <div className="divide-y divide-gray-200">
               {quotations.map((quotation, index) => (
                 <div key={index} className="px-6 py-4 hover:bg-gray-50">
-                  <div className="flex items-center gap-4">
+                  <div className="grid grid-cols-[auto_1fr_2fr_1fr_1fr_2fr_1fr_auto] gap-4 items-center min-w-0">
                     {/* Checkbox */}
-                    <div className="w-8 max-md:w-5 flex justify-center">
+                    <div className="flex justify-center">
                       <input
                         type="checkbox"
                         checked={selectedItems.has(index)}
@@ -420,19 +420,19 @@ export default function Quotations() {
                     </div>
 
                     {/* Quotation # */}
-                    <div className="w-32 max-md:w-28  text-sm text-gray-900 font-medium">
+                    <div className="text-sm text-gray-900 font-medium truncate">
                       {quotation.id}
                     </div>
 
                     {/* Name */}
-                    <div className="w-50 max-md:w-50 text-sm text-gray-700">
+                    <div className="text-sm text-gray-700 truncate">
                       {quotation.name}
                     </div>
 
                     {/* Status */}
-                    <div className="w-32 max-md:w-32 relative">
+                    <div className="relative min-w-0">
                       <div
-                        className={`inline-flex whitespace-nowrap items-center px-2 py-1 rounded-full text-xs font-medium border cursor-pointer ${getStatusStyles(
+                        className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium border cursor-pointer max-w-full ${getStatusStyles(
                           quotation.statusColor
                         )}`}
                         onClick={() =>
@@ -442,10 +442,14 @@ export default function Quotations() {
                         }
                       >
                         <div
-                          className={getStatusIndicator(quotation.statusColor)}
+                          className={`${getStatusIndicator(
+                            quotation.statusColor
+                          )} flex-shrink-0`}
                         ></div>
-                        {quotation.status}
-                        <ChevronDown className="w-3 max-md:w-1  h-3 ml-1 text-gray-600" />
+                        <span className="truncate mx-1">
+                          {quotation.status}
+                        </span>
+                        <ChevronDown className="w-3 h-3 text-gray-600 flex-shrink-0" />
                       </div>
                       {openDropdownIndex === index && (
                         <div
@@ -488,30 +492,30 @@ export default function Quotations() {
                     </div>
 
                     {/* Expiring on */}
-                    <div className="w-26 max-md:w-40 text-sm text-blue-600 font-medium whitespace-nowrap">
+                    <div className="text-sm text-blue-600 font-medium whitespace-nowrap truncate">
                       {quotation.expiringOn}
                     </div>
 
                     {/* Progress */}
-                    <div className="w-42 max-md:w-50 flex items-center space-x-2">
-                      <div className="flex-1 bg-gray-200 rounded-full h-2">
+                    <div className="flex items-center space-x-2 min-w-0">
+                      <div className="flex-1 bg-gray-200 rounded-full h-2 min-w-0">
                         <div
                           className="bg-green-500 h-2 rounded-full"
                           style={{ width: `${quotation.progress}%` }}
                         ></div>
                       </div>
-                      <span className="text-xs text-gray-600 font-medium">
+                      <span className="text-xs text-gray-600 font-medium whitespace-nowrap flex-shrink-0">
                         {quotation.progress}%
                       </span>
                     </div>
 
                     {/* Amount */}
-                    <div className="w-34 max-md:w-40   md:pl-6 text-sm text-gray-900 font-semibold">
+                    <div className="text-sm text-gray-900 font-semibold text-center truncate">
                       {quotation.amount}
                     </div>
 
                     {/* More Actions */}
-                    <div className="w-10 flex justify-end">
+                    <div className="flex justify-end">
                       <div className="relative">
                         <button
                           className="p-1 hover:bg-gray-100 rounded cursor-pointer"
@@ -550,7 +554,6 @@ export default function Quotations() {
           </div>
         </div>
       )}
-
       {/* Mobile List View */}
       {!showNewQuotationForm && (
         <div className="sm:hidden mt-4">
