@@ -52,7 +52,7 @@ export default function NewQuotationForm({ onClose }) {
             <div className="flex-grow relative">
               <input
                 type="text"
-                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-green-400 cursor-text"
+                className="w-full px-3 py-2 border border-[#8DCCBF] rounded focus:outline-none focus:ring-1 focus:ring-[#8DCCBF] cursor-text"
                 placeholder="Search"
                 value={customerName}
                 onChange={(e) => setCustomerName(e.target.value)}
@@ -75,7 +75,7 @@ export default function NewQuotationForm({ onClose }) {
           </label>
           <div className="relative">
             <select
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-green-400 appearance-none cursor-pointer"
+              className="w-full px-3 py-2 border border-[#8DCCBF] rounded focus:outline-none focus:ring-1 focus:ring-[#8DCCBF] appearance-none cursor-pointer"
               value={validTill}
               onChange={(e) => setValidTill(e.target.value)}
             >
@@ -95,7 +95,7 @@ export default function NewQuotationForm({ onClose }) {
           </label>
           <input
             type="text"
-            className="w-full px-3 py-2 border border-gray-300 rounded bg-gray-100 cursor-not-allowed"
+            className="w-full px-3 py-2 border border-[#8DCCBF] rounded bg-gray-100 cursor-not-allowed"
             value={quotationNumber}
             readOnly
           />
@@ -108,14 +108,11 @@ export default function NewQuotationForm({ onClose }) {
           </label>
           <div className="relative">
             <input
-              type="text"
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-green-400 cursor-pointer"
+              type="date"
+              className="w-full px-3 py-2 border border-[#8DCCBF] rounded focus:outline-none focus:ring-1 focus:ring-[#8DCCBF] cursor-pointer"
               value={quoteDate}
-              onChange={(e) => setQuoteDate(e.target.value)} // In a real app, this would open a date picker
+              onChange={(e) => setQuoteDate(e.target.value)}
             />
-            <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-              <CalendarDays className="w-4 h-4 text-gray-400" />
-            </div>
           </div>
         </div>
 
@@ -126,7 +123,7 @@ export default function NewQuotationForm({ onClose }) {
           </label>
           <input
             type="text"
-            className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-green-400 cursor-text"
+            className="w-full px-3 py-2 border border-[#8DCCBF] rounded focus:outline-none focus:ring-1 focus:ring-[#8DCCBF] cursor-text"
             placeholder="Add a subject for your quote"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}

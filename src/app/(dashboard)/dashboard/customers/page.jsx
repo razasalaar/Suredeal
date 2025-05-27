@@ -47,7 +47,7 @@ function NewCustomerForm({ onClose }) {
       <div className="bg-white rounded-lg shadow-xl w-full max-w-sm md:max-w-3xl mx-auto my-8">
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-gray-200">
-          <h2 className="text-lg font-semibold text-gray-900">New Customer</h2>
+          <h2 className="text-lg font-semibold text-[#173C36]">New Customer</h2>
           <button
             onClick={onClose}
             className="p-1 hover:bg-gray-100 rounded cursor-pointer"
@@ -60,33 +60,33 @@ function NewCustomerForm({ onClose }) {
         <div className="p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Name */}
           <div>
-            <label className="block text-sm text-gray-600 mb-1">Name</label>
+            <label className="block text-sm text-[#173C36] mb-1">Name</label>
             <input
               type="text"
               value={formData.name}
               onChange={(e) => handleInputChange("name", e.target.value)}
               placeholder="Johnathan"
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-400 focus:border-blue-400 text-sm"
+              className="w-full px-3 py-2 border border-[#8DCCBF] rounded focus:outline-none focus:ring-1 focus:ring-[#8DCCBF] focus:border-[#8DCCBF] text-sm text-[#173C36]"
             />
           </div>
 
           {/* Surname */}
           <div>
-            <label className="block text-sm text-gray-600 mb-1">Surname</label>
+            <label className="block text-sm text-[#173C36] mb-1">Surname</label>
             <input
               type="text"
               value={formData.surname}
               onChange={(e) => handleInputChange("surname", e.target.value)}
               placeholder="Doe George"
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-400 focus:border-blue-400 text-sm"
+              className="w-full px-3 py-2 border border-[#8DCCBF] rounded focus:outline-none focus:ring-1 focus:ring-[#8DCCBF] focus:border-[#8DCCBF] text-sm text-[#173C36]"
             />
           </div>
 
           {/* Title */}
           <div className="relative">
-            <label className="block text-sm text-gray-600 mb-1">Title</label>
+            <label className="block text-sm text-[#173C36] mb-1">Title</label>
             <div
-              className="w-full px-3 py-2 border border-gray-300 rounded cursor-pointer flex items-center justify-between bg-white text-sm"
+              className="w-full px-3 py-2 border border-[#8DCCBF] rounded cursor-pointer flex items-center justify-between bg-white text-sm text-[#173C36]"
               onClick={() => setTitleDropdownOpen(!titleDropdownOpen)}
             >
               <span
@@ -116,13 +116,13 @@ function NewCustomerForm({ onClose }) {
 
           {/* Email */}
           <div>
-            <label className="block text-sm  text-gray-600 mb-1">Email</label>
+            <label className="block text-sm text-[#173C36] mb-1">Email</label>
             <input
               type="email"
               value={formData.email}
               onChange={(e) => handleInputChange("email", e.target.value)}
               placeholder="johndoegeorge@gmail.com"
-              className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-400 focus:border-blue-400 text-sm"
+              className="w-full px-3 py-2 border border-[#8DCCBF] rounded focus:outline-none focus:ring-1 focus:ring-[#8DCCBF] focus:border-[#8DCCBF] text-sm text-[#173C36]"
             />
           </div>
 
@@ -130,11 +130,11 @@ function NewCustomerForm({ onClose }) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:col-span-2">
             {/* Phone */}
             <div>
-              <label className="block text-sm text-gray-600 mb-1">Phone</label>
+              <label className="block text-sm text-[#173C36] mb-1">Phone</label>
               <div className="flex">
                 <div className="relative">
                   <div
-                    className="px-3 py-2 border border-gray-300 rounded-l cursor-pointer flex items-center justify-between bg-white text-sm min-w-[70px]"
+                    className="px-3 py-2 border border-[#8DCCBF] rounded-l cursor-pointer flex items-center justify-between bg-white text-sm min-w-[70px] text-[#173C36]"
                     onClick={() => setCountryDropdownOpen(!countryDropdownOpen)}
                   >
                     <span className="text-gray-900">
@@ -164,14 +164,14 @@ function NewCustomerForm({ onClose }) {
                   value={formData.phone}
                   onChange={(e) => handleInputChange("phone", e.target.value)}
                   placeholder="999999 999999"
-                  className="flex-1 px-3 py-2 border border-l-0 border-gray-300 rounded-r focus:outline-none focus:ring-1 focus:ring-blue-400 focus:border-blue-400 text-sm"
+                  className="flex-1 px-3 py-2 border border-l-0 border-[#8DCCBF] rounded-r focus:outline-none focus:ring-1 focus:ring-[#8DCCBF] focus:border-[#8DCCBF] text-sm text-[#173C36]"
                 />
               </div>
             </div>
 
             {/* Company */}
             <div>
-              <label className="block text-sm text-gray-600 mb-1">
+              <label className="block text-sm text-[#173C36] mb-1">
                 Company
               </label>
               <input
@@ -179,14 +179,14 @@ function NewCustomerForm({ onClose }) {
                 value={formData.company}
                 onChange={(e) => handleInputChange("company", e.target.value)}
                 placeholder="Nautical Constructions Pvt Ltd"
-                className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-400 focus:border-blue-400 text-sm"
+                className="w-full px-3 py-2 border border-[#8DCCBF] rounded focus:outline-none focus:ring-1 focus:ring-[#8DCCBF] focus:border-[#8DCCBF] text-sm text-[#173C36]"
               />
             </div>
           </div>
         </div>
 
         {/* Footer Buttons */}
-        <div className="flex flex-col-reverse md:flex-row items-stretch md:items-center justify-end gap-3 p-4 border-t border-gray-200">
+        <div className="flex  items-stretch md:items-center justify-end gap-3 p-4 border-t border-gray-200">
           <button
             onClick={handleCancel}
             className="px-4 py-2 text-sm text-gray-700 border border-gray-300 rounded hover:bg-gray-50 cursor-pointer w-full md:w-auto"
