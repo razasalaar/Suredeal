@@ -579,7 +579,7 @@ export default function Customers() {
                   </div>
 
                   {/* Amount */}
-                  <div className="text-sm text-gray-900 font-semibold text-center truncate">
+                  <div className="text-sm text-gray-900 font-semibold  truncate">
                     {customer.amount}
                   </div>
 

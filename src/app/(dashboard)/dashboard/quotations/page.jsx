@@ -510,7 +510,7 @@ export default function Quotations() {
                     </div>
 
                     {/* Amount */}
-                    <div className="text-sm text-gray-900 font-semibold text-center truncate">
+                    <div className="text-sm text-gray-900 font-semibold pl-2 truncate">
                       {quotation.amount}
                     </div>
 

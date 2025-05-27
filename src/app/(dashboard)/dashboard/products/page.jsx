@@ -538,7 +538,7 @@ export default function Products() {
                   </div>
 
                   {/* Product Price */}
-                  <div className="text-sm text-gray-900 font-semibold text-center truncate">
+                  <div className="text-sm text-gray-900 font-semibold  truncate">
                     {product.productPrice}
                   </div>
 
