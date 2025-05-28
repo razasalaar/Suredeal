@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowLeft, CalendarDays, ChevronDown, Plus } from "lucide-react";
+import { ArrowLeft, CalendarDays, ChevronDown, Plus, X } from "lucide-react";
 
 export default function NewQuotationForm({ onClose }) {
   const [customerName, setCustomerName] = useState("");
@@ -10,10 +10,14 @@ export default function NewQuotationForm({ onClose }) {
   const [validTill, setValidTill] = useState("Next 30 days"); // Mock default
   const [subject, setSubject] = useState("");
   const [items, setItems] = useState([]);
+  const [showMobileAddItemModal, setShowMobileAddItemModal] = useState(false);
 
   const handleAddItem = () => {
-    // In a real application, this would add a new item row to the 'items' state
-    console.log("Add New Item clicked");
+    setShowMobileAddItemModal(true);
+  };
+
+  const handleCloseMobileAddItemModal = () => {
+    setShowMobileAddItemModal(false);
   };
 
   const handleSave = () => {
@@ -42,14 +46,14 @@ export default function NewQuotationForm({ onClose }) {
       </div>
 
       {/* Form Fields */}
-      <div className="px-4 md:px-6 grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+      <div className="px-4 md:px-6 mb-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Customer Name */}
-        <div>
+        <div className="md:col-span-2">
           <label className="block text-sm font-medium text-gray-600 mb-2">
             Customer name
           </label>
           <div className="flex items-center gap-2">
-            <div className="flex-grow relative">
+            <div className="flex w-lg relative">
               <input
                 type="text"
                 className="w-full px-3 py-2 border border-[#8DCCBF] rounded focus:outline-none focus:ring-1 focus:ring-[#8DCCBF] cursor-text"
@@ -68,29 +72,9 @@ export default function NewQuotationForm({ onClose }) {
           </div>
         </div>
 
-        {/* Valid Till */}
-        <div>
-          <label className="block text-sm font-medium text-gray-600 mb-2">
-            Valid Till
-          </label>
-          <div className="relative">
-            <select
-              className="w-full px-3 py-2 border border-[#8DCCBF] rounded focus:outline-none focus:ring-1 focus:ring-[#8DCCBF] appearance-none cursor-pointer"
-              value={validTill}
-              onChange={(e) => setValidTill(e.target.value)}
-            >
-              <option value="Next 30 days">Next 30 days</option>
-              {/* Add other options here */}
-            </select>
-            <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-              <ChevronDown className="w-4 h-4 text-gray-400" />
-            </div>
-          </div>
-        </div>
-
         {/* Quotation# */}
-        <div>
-          <label className="block text-sm font-medium text-gray-600 mb-2">
+        <div className="lg:col-span-2  sm:w-sm ">
+          <label className="block  text-sm font-medium text-gray-600 mb-2">
             Quotation#
           </label>
           <input
@@ -106,7 +90,7 @@ export default function NewQuotationForm({ onClose }) {
           <label className="block text-sm font-medium text-gray-600 mb-2">
             Quote date
           </label>
-          <div className="relative">
+          <div className="relative sm:w-sm ">
             <input
               type="date"
               className="w-full px-3 py-2 border border-[#8DCCBF] rounded focus:outline-none focus:ring-1 focus:ring-[#8DCCBF] cursor-pointer"
@@ -116,8 +100,28 @@ export default function NewQuotationForm({ onClose }) {
           </div>
         </div>
 
+        {/* Valid Till */}
+        <div>
+          <label className="block text-sm font-medium text-gray-600 mb-2">
+            Valid Till
+          </label>
+          <div className="relative sm:w-sm ">
+            <select
+              className="w-full px-3 py-2 border border-[#8DCCBF] rounded focus:outline-none focus:ring-1 focus:ring-[#8DCCBF] appearance-none cursor-pointer"
+              value={validTill}
+              onChange={(e) => setValidTill(e.target.value)}
+            >
+              <option value="Next 30 days">Next 30 days</option>
+              {/* Add other options here */}
+            </select>
+            <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+              <ChevronDown className="w-4 h-4 text-gray-400" />
+            </div>
+          </div>
+        </div>
+
         {/* Subject */}
-        <div className="md:col-span-2">
+        <div className="lg:col-span-2 sm:w-sm ">
           <label className="block text-sm font-medium text-gray-600 mb-2">
             Subject
           </label>
@@ -144,19 +148,27 @@ export default function NewQuotationForm({ onClose }) {
         </div>
         <div className="bg-white border border-gray-200 rounded-b-md p-4 text-center text-gray-500">
           {items.length === 0 ? (
-            "No items added"
+            <div className="flex flex-col items-center justify-center py-8">
+              <img
+                src="/images/Interface.png"
+                alt="No items"
+                className="w-32 h-32 object-contain mb-4"
+              />
+              <p className="text-gray-500">No items added</p>
+            </div>
           ) : (
-            // Render items here in a real application
             <div>Items list</div>
           )}
-        </div>
-        <div className="flex justify-center">
-          <button
-            onClick={handleAddItem}
-            className="mt-4 px-4 py-2 bg-[#218C7D] text-white rounded flex items-center text-sm cursor-pointer"
-          >
-            <Plus className="w-4 h-4 mr-1" /> New Item
-          </button>
+
+          <div className="flex justify-center">
+            {/* Mobile Add Item Button */}
+            <button
+              onClick={handleAddItem}
+              className=" mt-4 px-4 py-2 bg-[#218C7D] text-white rounded flex items-center text-sm cursor-pointer"
+            >
+              <Plus className="w-4 h-4 mr-1" /> New Item
+            </button>
+          </div>
         </div>
       </div>
 
@@ -175,6 +187,166 @@ export default function NewQuotationForm({ onClose }) {
           Save
         </button>
       </div>
+
+      {/* Mobile Add Item Modal */}
+      {showMobileAddItemModal && (
+        <>
+          {/* Mobile Modal */}
+          <div className="sm:hidden fixed inset-0 bg-black/20 bg-opacity-50 z-50 flex items-end">
+            <div className="bg-white w-full rounded-t-lg animate-slide-up">
+              {/* Modal Header */}
+              <div className="flex items-center justify-between p-4 border-b border-gray-200">
+                <h2 className="text-lg font-semibold text-[#173C36]">
+                  Add New Item
+                </h2>
+                <button
+                  onClick={handleCloseMobileAddItemModal}
+                  className="p-1 hover:bg-gray-100 rounded cursor-pointer"
+                >
+                  <X className="w-5 h-5 text-[#173C36]" />
+                </button>
+              </div>
+
+              {/* Modal Content */}
+              <div className="p-4 space-y-4">
+                {/* Item & Description */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-600 mb-2">
+                    Item & Description
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full px-3 py-2 border border-[#8DCCBF] rounded focus:outline-none focus:ring-1 focus:ring-[#8DCCBF] cursor-text"
+                    placeholder="Enter item description"
+                  />
+                </div>
+
+                {/* Unit */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-600 mb-2">
+                    Unit
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full px-3 py-2 border border-[#8DCCBF] rounded focus:outline-none focus:ring-1 focus:ring-[#8DCCBF] cursor-text"
+                    placeholder="Enter unit"
+                  />
+                </div>
+
+                {/* Buttons */}
+                <div className="flex gap-3 mt-6">
+                  <button
+                    onClick={handleCloseMobileAddItemModal}
+                    className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-100 cursor-pointer"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={() => {
+                      // Handle add item logic here
+                      handleCloseMobileAddItemModal();
+                    }}
+                    className="flex-1 px-4 py-2 bg-[#173C36] text-white rounded hover:bg-[#218C7D] cursor-pointer"
+                  >
+                    Add
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Desktop Modal */}
+          <div className="hidden sm:flex fixed inset-0 bg-black/20 bg-opacity-50 z-50 items-center justify-center">
+            <div className="bg-white w-full max-w-md rounded-lg animate-fade-in">
+              {/* Modal Header */}
+              <div className="flex items-center justify-between p-4 border-b border-gray-200">
+                <h2 className="text-lg font-semibold text-[#173C36]">
+                  Add New Item
+                </h2>
+                <button
+                  onClick={handleCloseMobileAddItemModal}
+                  className="p-1 hover:bg-gray-100 rounded cursor-pointer"
+                >
+                  <X className="w-5 h-5 text-[#173C36]" />
+                </button>
+              </div>
+
+              {/* Modal Content */}
+              <div className="p-6 space-y-4">
+                {/* Item & Description */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-600 mb-2">
+                    Item & Description
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full px-3 py-2 border border-[#8DCCBF] rounded focus:outline-none focus:ring-1 focus:ring-[#8DCCBF] cursor-text"
+                    placeholder="Enter item description"
+                  />
+                </div>
+
+                {/* Unit */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-600 mb-2">
+                    Unit
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full px-3 py-2 border border-[#8DCCBF] rounded focus:outline-none focus:ring-1 focus:ring-[#8DCCBF] cursor-text"
+                    placeholder="Enter unit"
+                  />
+                </div>
+
+                {/* Buttons */}
+                <div className="flex gap-3 mt-6">
+                  <button
+                    onClick={handleCloseMobileAddItemModal}
+                    className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-100 cursor-pointer"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={() => {
+                      // Handle add item logic here
+                      handleCloseMobileAddItemModal();
+                    }}
+                    className="flex-1 px-4 py-2 bg-[#173C36] text-white rounded hover:bg-[#218C7D] cursor-pointer"
+                  >
+                    Add
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+
+      <style jsx>{`
+        @keyframes slide-up {
+          from {
+            transform: translateY(100%);
+          }
+          to {
+            transform: translateY(0);
+          }
+        }
+        .animate-slide-up {
+          animation: slide-up 0.3s ease-out;
+        }
+        @keyframes fade-in {
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        .animate-fade-in {
+          animation: fade-in 0.2s ease-out;
+        }
+      `}</style>
     </div>
   );
 }
