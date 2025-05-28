@@ -11,6 +11,7 @@ export default function NewQuotationForm({ onClose }) {
   const [subject, setSubject] = useState("");
   const [items, setItems] = useState([]);
   const [showMobileAddItemModal, setShowMobileAddItemModal] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
 
   const handleAddItem = () => {
     setShowMobileAddItemModal(true);
@@ -26,16 +27,23 @@ export default function NewQuotationForm({ onClose }) {
     onClose(); // Close the form after saving (or redirect)
   };
 
-  const handleCancel = () => {
-    onClose();
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      onClose();
+    }, 300); // Match this with animation duration
   };
 
   return (
-    <div className="w-full py-4 md:py-8 bg-[#FFFFFF] min-h-screen rounded-none md:rounded-2xl">
+    <div
+      className={`w-full py-4 md:py-8 bg-[#FFFFFF] min-h-screen rounded-none md:rounded-2xl ${
+        isClosing ? "animate-slide-out" : "animate-slide-in"
+      }`}
+    >
       {/* Header */}
       <div className="flex items-center px-4 md:px-6 mb-6">
         <button
-          onClick={handleCancel}
+          onClick={handleClose}
           className="mr-4 p-1 rounded hover:bg-gray-100 cursor-pointer"
         >
           <ArrowLeft className="w-5 h-5 text-[#173C36]" />
@@ -66,7 +74,7 @@ export default function NewQuotationForm({ onClose }) {
                 <ChevronDown className="w-4 h-4 text-gray-400" />
               </div>
             </div>
-            <button className="px-3 py-2 bg-[#218C7D] text-white rounded flex items-center text-sm cursor-pointer">
+            <button className="px-3 py-2 bg-[#218C7D] text-white rounded flex items-center text-sm cursor-pointer whitespace-nowrap">
               <Plus className="w-4 h-4 mr-1" /> New customer
             </button>
           </div>
@@ -175,7 +183,7 @@ export default function NewQuotationForm({ onClose }) {
       {/* Footer Buttons */}
       <div className="px-4 md:px-6 flex gap-4">
         <button
-          onClick={handleCancel}
+          onClick={handleClose}
           className="px-6 py-2 border border-gray-300 rounded text-gray-700 hover:bg-gray-100 cursor-pointer"
         >
           Cancel
@@ -256,7 +264,7 @@ export default function NewQuotationForm({ onClose }) {
           </div>
 
           {/* Desktop Modal */}
-          <div className="hidden sm:flex fixed inset-0 bg-black/20 bg-opacity-50 z-50 items-center justify-center">
+          <div className="hidden sm:flex fixed inset-0  z-50 items-center justify-center">
             <div className="bg-white w-full max-w-md rounded-lg animate-fade-in">
               {/* Modal Header */}
               <div className="flex items-center justify-between p-4 border-b border-gray-200">
@@ -345,6 +353,32 @@ export default function NewQuotationForm({ onClose }) {
         }
         .animate-fade-in {
           animation: fade-in 0.2s ease-out;
+        }
+        @keyframes slide-in {
+          from {
+            transform: translateX(-100%);
+            opacity: 0;
+          }
+          to {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+        @keyframes slide-out {
+          from {
+            transform: translateX(0);
+            opacity: 1;
+          }
+          to {
+            transform: translateX(-100%);
+            opacity: 0;
+          }
+        }
+        .animate-slide-in {
+          animation: slide-in 0.3s ease-out forwards;
+        }
+        .animate-slide-out {
+          animation: slide-out 0.3s ease-out forwards;
         }
       `}</style>
     </div>
